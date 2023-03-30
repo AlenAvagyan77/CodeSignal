@@ -15,7 +15,7 @@ public class Sudoku {
         {3, 4, 5, 2, 8, 6, 1, 7, 9}
     };
     System.out.println(solution(testArray));
-  }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
+  }
   static boolean solution(int[][] grid) {
     for (int i = 0; i < 3; i++ ){
       for (int j = 0; j < 3; j++) {
