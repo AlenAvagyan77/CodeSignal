@@ -1,0 +1,142 @@
+package JavaFunctionalInterfacesAndStreams;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.DoubleBinaryOperator;
+import java.util.function.DoubleConsumer;
+import java.util.function.DoubleFunction;
+import java.util.function.DoublePredicate;
+import java.util.function.DoubleUnaryOperator;
+import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
+import java.util.function.IntConsumer;
+import java.util.function.IntFunction;
+import java.util.function.IntPredicate;
+import java.util.function.IntUnaryOperator;
+import java.util.function.LongConsumer;
+import java.util.function.LongFunction;
+import java.util.function.LongSupplier;
+import java.util.function.ObjIntConsumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+
+public class JavaFunctionalInterfaces {
+
+  public static void main(String[] args) {
+    System.out.println("1. Supplier <T> : This interface takes no arguments and returns a result of type T.");
+    Supplier<Integer> randomNumberSupplier = () -> new Random().nextInt(100);
+    System.out.println(randomNumberSupplier.get());
+    System.out.println();
+    System.out.println("2. Consumer<T> : This interface takes an argument of type T and returns no value");
+    Consumer<String> printMassage = System.out::println;
+    printMassage.accept("Method of Consumer");
+    System.out.println();
+    System.out.println("3. Function<T, R> : This interface takes an argument of type T and returns a result of type R");
+    Function<Integer, String> convertToString = number -> "The number is " + number;
+    System.out.println(convertToString.apply(10));
+    System.out.println();
+    System.out.println("4. Predicate <T> : This interface takes an argument of type T and returns a boolean value.");
+    Predicate<Integer> isEven = number -> number % 2 == 0;
+    System.out.println(isEven.test(4));
+    System.out.println();
+    System.out.println("5. UnaryOperator<T> : This interface takes an argument of type T and returns a result of type T.");
+    UnaryOperator<Integer> incrementByOne = number -> number + 1;
+    System.out.println(incrementByOne.apply(10));
+    System.out.println();
+    System.out.println("6. BinaryOperator<T> : This interface takes two arguments of types T and U, and returns a result of the same type as the arguments. ");
+    BinaryOperator<Integer> sum = Integer::sum;
+    System.out.println(sum.apply(10, 20));
+    System.out.println();
+    System.out.println("7. BiFunction<T, U, R> : This interface takes two arguments of types T and U, and returns a result of type R");
+    BiFunction<Integer, Integer, String> concatenate = (a, b) -> a.toString() + b.toString();
+    System.out.println(concatenate.apply(10, 20));
+    System.out.println();
+    System.out.println("8. BiConsumer<T, U> : This interface takes two arguments of types T and U, and returns no value");
+    BiConsumer<String, String> printFullName = (firstName, lastName) -> {
+      System.out.println("Full Name: " + firstName + " " + lastName);
+    };
+    printFullName.accept("John", "Doe");
+    System.out.println();
+    System.out.println("9. Comparator<T> : This interface can be used to compare two objects of type T.");
+    List<Integer> numbers = Arrays.asList(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5);
+    Comparator<Integer> reverseOrder = (a, b) -> b.compareTo(a);
+    Collections.sort(numbers);
+    System.out.println(numbers);
+    System.out.println();
+    System.out.println("10. IntConsumer : This interface takes an argument of type int and returns no value");
+    IntConsumer printNumber = System.out::println;
+    printNumber.accept(10);
+    System.out.println();
+    System.out.println("11. IntFunction<R> : This interface accepts an int-valued argument and produces a result of type R");
+    IntFunction<Integer> ob = a -> a / 6;
+    System.out.println(ob.apply(24));
+    System.out.println();
+    System.out.println("12. IntPredicate : This interface takes an argument of type int and returns a boolean value.");
+    IntPredicate isEven1 = number -> number % 2 == 0;
+    System.out.println(isEven1.test(11));
+    System.out.println();
+    System.out.println("13. IntUnaryOperator : This interface takes an argument of type int and returns an int value.");
+    IntUnaryOperator square = number -> number * number;
+    System.out.println(square.applyAsInt(5));
+    System.out.println();
+    System.out.println("14. IntBinaryOperator : This interface takes two int values as input and produces an int result");
+    IntBinaryOperator intBinaryOp = Integer::sum;
+    System.out.println(intBinaryOp.applyAsInt(20, 20));
+    System.out.println();
+    System.out.println("15. ObjIntConsumer<T> : This interface accepts an object-valued and an int-valued argument, and returns no result.");
+    ObjIntConsumer<String> biConsumer = (x, y) -> {
+      System.out.println(x + " " + y);
+    };
+    biConsumer.accept("Interface", 2);
+    System.out.println();
+    System.out.println("16. LongSupplier : This interface takes no arguments and returns a long value");
+    LongSupplier getRandomLong = () -> new Random().nextLong();
+    System.out.println(getRandomLong.getAsLong());
+    System.out.println();
+    System.out.println("17. LongConsumer : This interface that takes an argument of type long and returns no value.");
+    LongConsumer printNumber1 = System.out::println;
+    printNumber1.accept(202000000000000L);
+    System.out.println();
+    System.out.println("18. LongFunction<R> : This interface takes an argument of type long and returns a result of type R.");
+    LongFunction<String> convertToString1 = Long::toString;
+    System.out.println(convertToString1.apply(1000));
+    System.out.println();
+    System.out.println("19. DoubleConsumer : This interface takes an argument of type double and returns no result.");
+    DoubleConsumer printSquare = value -> System.out.println("Square of " + value + " is " + Math.pow(value, 2));
+    printSquare.accept(4);
+    System.out.println();
+    System.out.println("20. DoubleFunction<R> : This interface takes an argument of type double and returns a result of type R");
+    DoubleFunction<String> convertToString2 = Double::toString;
+    System.out.println(convertToString2.apply(3.14));
+    System.out.println();
+    System.out.println("21. DoublePredicate : This interface takes an argument of type double and returns a boolean value.");
+    DoublePredicate isPositive = number -> number > 0;
+    System.out.println(isPositive.test(10.5));
+    System.out.println();
+    System.out.println("22. DoubleUnaryOperator : This interface takes an argument of type double and returns a double value. ");
+    DoubleUnaryOperator squareRoot = Math::sqrt;
+    System.out.println(squareRoot.applyAsDouble(16));
+    System.out.println();
+    System.out.println("23. DoubleBinaryOperator : This interface  accepts two double-precision floating-point operands"
+            + " and produces a double-precision floating-point result.");
+    DoubleBinaryOperator multiply = (double a, double b) -> a * b;
+    double result = multiply.applyAsDouble(2.0, 3.5);
+    System.out.println(result);
+    System.out.println();
+    System.out.println("24. Runnable - This interface has a single abstract method called run()"
+        + " that takes no arguments and returns no value. "
+        + "It is used to represent a task that can be executed by a thread.");
+    Runnable task = () -> { System.out.println("This is a task of Runnable !"); };
+    Thread thread = new Thread(task);
+    thread.start();
+
+  }
+}
