@@ -12,10 +12,10 @@ public class Test {
         System.out.println("Key of HashTable is a : " + key);
         hashTable.remove("C");
         System.out.println("After removing " + hashTable);
-        boolean isConatinsKey = hashTable.containsKey("B");
-        System.out.println(isConatinsKey);
-        boolean isConatinsValue = hashTable.containsValue(1);
-        System.out.println(isConatinsValue);
+        boolean isContainsKey = hashTable.containsKey("B");
+        System.out.println(isContainsKey);
+        boolean isContainsValue = hashTable.containsValue(1);
+        System.out.println(isContainsValue);
         System.out.println("Size of HashTable : " + hashTable.size());
         boolean isEmpty = hashTable.isEmpty();
         System.out.println(isEmpty);
