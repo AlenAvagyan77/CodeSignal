@@ -18,7 +18,7 @@ public class HashTable<K, V> {
             }
         }
         if (size > 0) {
-            sb.setLength(sb.length() - 2); // remove the last ", "
+            sb.setLength(sb.length() - 2);
         }
         sb.append("}");
         return sb.toString();
