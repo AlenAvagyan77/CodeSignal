@@ -14,7 +14,6 @@ public class Main {
         // method get()
         int value = ht.get("A");
         System.out.println("Value of A = " + value);
-        // method clone()
         ht.clone();
         System.out.println("Cloned  HashTable is a " + ht);
         // method containsKey()
