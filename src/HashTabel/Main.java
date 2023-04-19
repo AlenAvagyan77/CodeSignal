@@ -11,7 +11,6 @@ public class Main {
         ht.put("B", 2);
         ht.put("C", 3);
         System.out.println("This is a Current HashTable : " + ht);
-        // method get()
         int value = ht.get("A");
         System.out.println("Value of A = " + value);
         ht.clone();
